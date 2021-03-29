@@ -1,0 +1,19 @@
+{
+  "name": "backend_geekhunter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "André Serudo",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
