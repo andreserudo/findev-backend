@@ -11,6 +11,7 @@ app.get('/movies', async (_req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
+app.listen(PORT);
 // app.listen(PORT, () => {
 //   console.log(`Ouvindo a porta ${PORT}`);
 // });
