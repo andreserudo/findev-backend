@@ -9,7 +9,7 @@ app.get('/movies', async (_req, res) => {
   res.status(200).json(movies);
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 6000;
 
 
 app.listen(PORT);
