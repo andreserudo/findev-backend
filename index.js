@@ -1,18 +1,12 @@
 const express = require('express');
-const Movie = require('./models/Movie');
+const candidates = require('./routes/candidates.js');
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-app.get('/movies', async (_req, res) => {
-  const movies = await Movie.getAll();
+app.use(express.json());
+app.use('/candidates', candidates);
 
-  res.status(200).json(movies);
+app.listen(PORT, () => {
+  console.log(`Ouvindo a porta ${PORT}`);
 });
-
-const PORT = process.env.PORT || 3000;
-
-
-app.listen(PORT);
-// app.listen(PORT, () => {
-//   console.log(`Ouvindo a porta ${PORT}`);
-// });
