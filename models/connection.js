@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
-//const MONGODB_URL = 'mongodb+srv://dbSerudo:d2E9UNsWwHHrhVpf@cluster0.zdfop.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-const MONGODB_URL = 'mongodb://127.0.0.1';
+const MONGODB_URL = 'mongodb+srv://dbSerudo:d2E9UNsWwHHrhVpf@cluster0.zdfop.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+//const MONGODB_URL = 'mongodb://127.0.0.1';
 
 const connection = () => {
   return MongoClient
