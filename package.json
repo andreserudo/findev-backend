@@ -1,6 +1,9 @@
 {
   "name": "backend_geekhunter",
   "version": "1.0.0",
+  "engines": {
+    "node": "^14.x"
+  },    
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,9 +13,6 @@
   },
   "author": "André Serudo",
   "license": "MIT",
-  "engines": {
-    "node": "^14.x"
-  },  
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
