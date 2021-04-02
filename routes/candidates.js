@@ -30,8 +30,7 @@ app.post('/new', (req, res) => {
 
 app.get('/match', async (req, res) => {
   const filters = req.query;
-  
-  console.log(filters);
+    
   const matches = await Candidates.matchCandidates(filters);
 
   res.status(200).json(matches);
