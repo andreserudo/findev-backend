@@ -28,11 +28,11 @@ app.post('/new', (req, res) => {
   res.status(200).json({ message: 'oi'});
 })
 
-app.get('/match/:id', async (req, res) => {
-  const filters = req.body;
-  const { id } = req.params;
-
-  const matches = await Candidates.matchCandidates(filters, id);
+app.get('/match', async (req, res) => {
+  const filters = req.query;
+  
+  console.log(filters);
+  const matches = await Candidates.matchCandidates(filters);
 
   res.status(200).json(matches);
 

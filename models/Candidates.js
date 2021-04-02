@@ -55,7 +55,7 @@ const removeAll = async () => {
   .then((db) => db.collection('candidates').deleteMany());
 }
 
-const getPipeline = (filters, toSkip, limit) => {
+const getIntervalPipeline = (filters, toSkip, limit) => {
   const { 
     city, 
     stack, 
@@ -120,7 +120,7 @@ const getPipeline = (filters, toSkip, limit) => {
           "$match": {
             "technologies.name": {
               '$regex': new RegExp(stack, 'i')
-            }
+            },            
           }
         },
         { '$skip': toSkip },
@@ -199,16 +199,25 @@ const getPipeline = (filters, toSkip, limit) => {
 
 }
 
-const matchCandidates = async (filters, page) => {
+const matchCandidates = async (filters) => {  
   const matches = [];
+  const page = filters.page;
   const limit = 5;
   const toSkip = (limit * page) - limit;
-  const pipeline = getPipeline(filters, toSkip, limit);
+  const { type } = filters;
+  let pipeline = [];
+
+  if (type === 'entre') {
+    pipeline = getIntervalPipeline(filters, toSkip, limit);
+  } else {
+    pipeline = getLimitPipeline(filters, toSkip, limit);
+  }
+  
   // db.candidates.aggregate([{$match: {city: {$regex: /^rio/i}}}]).pretty();
   
-  console.log(pipeline);
+  console.log(`pipe: ${pipeline}`);
   const result = await connection()
-    .then((db) => db.collection('candidates').aggregate(pipeline))
+    .then((db) => db.collection('candidates').aggregate(pipeline).limit(limit))
     .then((candidates) =>
     candidates.map(({id_candidate, city, experience, technologies}) => getCandidates({
       id: id_candidate,
