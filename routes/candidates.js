@@ -38,10 +38,10 @@ app.get('/match', async (req, res) => {
 });
 
 
-app.delete('/remove', async (req, res) => {
-  await Candidates.removeAll();
+// app.delete('/remove', async (req, res) => {
+//   await Candidates.removeAll();
 
-  res.status(200).json({message: "coleção foi resetada."})
-})
+//   res.status(200).json({message: "coleção foi resetada."})
+// })
 
 module.exports = app;
